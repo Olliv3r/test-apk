@@ -1,7 +1,7 @@
 [app]
 
-title = StoryEngine
-package.name = storyengine
+title = TesteAPK
+package.name = testeapk
 package.domain = org.example
 
 source.dir = .
