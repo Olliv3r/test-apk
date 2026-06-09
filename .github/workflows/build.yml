@@ -12,9 +12,18 @@ jobs:
       image: kivy/buildozer
 
     steps:
-    - name: Checkout
+    - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Build APK
+    - name: Fix permissions
       run: |
-        buildozer -v android debug
+        git config --global --add safe.directory /__w/*
+
+    - name: Clean build (optional)
+      run: |
+        buildozer android clean || true
+
+    - name: Build APK (no interaction)
+      run: |
+        export PIP_BREAK_SYSTEM_PACKAGES=1
+        yes | buildozer -v android debug
