@@ -19,11 +19,7 @@ jobs:
       run: |
         git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
-    - name: Clean build (safe)
-      run: |
-        buildozer android clean || true
-
     - name: Build APK (non-interactive)
       run: |
+        export BUILDOZER_ALLOW_ROOT=1
         yes | buildozer -v android debug
-
